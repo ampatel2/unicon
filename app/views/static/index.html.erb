@@ -43,7 +43,10 @@
         autoSelect: true,
         change: function (event, ui) {
           if (!ui.item) {
-            this.value = '';} }
+            this.value = '';} },
+        open: function(event, ui) {
+        $('.ui-autocomplete').off('menufocus hover mouseover mouseenter')
+    }
       }).on("focus", function() {
         $( "#startUnit" ).autocomplete( "search" , "" );
       }).on("autocompleteselect", function(e, ui) {

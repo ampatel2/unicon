@@ -73,19 +73,10 @@ namespace :deploy do
     end
   end
 
-  desc "reload the database with seed data"
-  task :seed do
-    on roles(:app) do
-        puts "==Dev Tasks: Seeding Database=="
-        execute :rake "db:seed"
-    end
-  end
-
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
-  after  :finishing,    :seed
 end
 
 # ps aux | grep puma    # Get puma pid
