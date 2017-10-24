@@ -1,8 +1,8 @@
 # Change these
-server '104.236.40.195', port: 22, roles: [:web, :app, :db], primary: true
+server '165.227.117.164', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:ampatel2/converter.git'
-set :application,     'converter'
+set :repo_url,        'git@github.com:ampatel2/unicon.git'
+set :application,     'unicon'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
