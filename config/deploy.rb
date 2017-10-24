@@ -77,7 +77,7 @@ namespace :deploy do
   task :seed do
     on roles(:app) do
         puts "==Dev Tasks: Seeding Database=="
-        run_locally "cd #{current_path}; bundle exec rake db:seed"
+        execute :rake "db:seed"
     end
   end
 
