@@ -28,6 +28,22 @@
 
   $(function() {
     reset();
+    $("#reset").on("click", function() {
+      $('#input_value').val("1");
+      $('#startUnit').val("");
+      $('#dimension').val("");
+      $('#endUnit').val("");
+      $('#end_value').text("0");
+      reset();
+      return false;
+    });
+    $("#flip").on("click", function() {
+      var temp = $('#startUnit').val();
+      $('#startUnit').val($('#endUnit').val());
+      console.log($('#startUnit').val());
+      update_sources(1,$('#startUnit').val() );
+      return false;
+    });
     $("#copy").on("click", function() {
 
       var x = document.getElementById("end_value");
@@ -119,8 +135,8 @@
     <div class="text-center"><label id="end_value" class="titler-bg">0</label></div>
   </div>
   <div class="row">
-    <%= link_to 'Reset', '' %> | 
-    <% link_to 'Copy to Clipboard', '', id: "copy" %> | 
-    <%= link_to 'Flip Units', '' %>
+    <%= link_to 'Reset', '', id: "reset" %> | 
+    <%= link_to 'Flip Units', '', id: "flip" %><br />
+    <h3><%= link_to 'Bitcoin Donations', '', id: "donate" %></h3>
   </div>
 </div>
