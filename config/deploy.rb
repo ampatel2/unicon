@@ -78,7 +78,7 @@ namespace :deploy do
     on roles(:app) do
       within release_path do
         puts "==Dev Tasks: Seeding Database=="
-        execute "bundle exec rake db:seed"
+        run "rake db:seed"
       end
     end
   end
