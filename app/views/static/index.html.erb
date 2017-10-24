@@ -63,7 +63,9 @@
         change: function (event, ui) {
           if (!ui.item) {
             this.value = '';} }
-      }).on("focus click", function() {
+      }).on("focus", function() {
+        $( "#endUnit" ).autocomplete( "search" , "" );
+      }).on("click", function() {
         $( "#endUnit" ).autocomplete( "search" , "" );
       }).on("autocompleteselect", function(e, ui) {
         update_sources(2, ui.item.value);
@@ -121,7 +123,7 @@
   </div>
   <div class="row">
     <%= link_to 'Reset', '' %> | 
-    <%= link_to 'Copy to Clipboard', '', id: "copy" %> | 
+    <% link_to 'Copy to Clipboard', '', id: "copy" %> | 
     <%= link_to 'Flip Units', '' %>
   </div>
 </div>
