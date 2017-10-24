@@ -66,7 +66,7 @@
         open: function(event, ui) {
         $('.ui-autocomplete').off('menufocus hover mouseover mouseenter')
     }
-      }).on("focus change keyup paste click", function() {
+      }).on("focus", function() {
         $( "#startUnit" ).autocomplete( "search" , "" );
       }).on("autocompleteselect", function(e, ui) {
         update_sources(1, ui.item.value);
@@ -82,7 +82,7 @@
         change: function (event, ui) {
           if (!ui.item) {
             this.value = '';} }
-      }).on("focus change keyup paste click", function() {
+      }).on("focus", function() {
         $( "#endUnit" ).autocomplete( "search" , "" );
       }).on("autocompleteselect", function(e, ui) {
         update_sources(2, ui.item.value);
@@ -98,7 +98,7 @@
         change: function (event, ui) {
             if (!ui.item) {
                 this.value = '';} }
-      }).on("focus change keyup paste click", function() {
+      }).on("focus", function() {
         $( "#dimension" ).autocomplete( "search" , "" );
       }).on("autocompleteselect", function(e, ui) {
         update_sources(3, ui.item.value);
@@ -140,6 +140,6 @@
   <div class="row">
     <%= link_to 'Reset', '', id: "reset" %> | 
     <%= link_to 'Flip Units', '', id: "flip" %><br />
-    <h3><%= link_to 'Bitcoin Donations', '', id: "donate" %></h3>
+    <h3><%= link_to 'Support this site - donate', '', id: "donate" %></h3>
   </div>
 </div>
