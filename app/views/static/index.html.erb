@@ -47,7 +47,7 @@
         open: function(event, ui) {
         $('.ui-autocomplete').off('menufocus hover mouseover mouseenter')
     }
-      }).on("focus", function() {
+      }).on("focus click", function() {
         $( "#startUnit" ).autocomplete( "search" , "" );
       }).on("autocompleteselect", function(e, ui) {
         update_sources(1, ui.item.value);
@@ -63,7 +63,7 @@
         change: function (event, ui) {
           if (!ui.item) {
             this.value = '';} }
-      }).on("focus", function() {
+      }).on("focus click", function() {
         $( "#endUnit" ).autocomplete( "search" , "" );
       }).on("autocompleteselect", function(e, ui) {
         update_sources(2, ui.item.value);
@@ -80,7 +80,7 @@
             if (!ui.item) {
                 this.value = '';} }
         })
-      .on("focus", function() {
+      .on("focus click", function() {
         $( "#dimension" ).autocomplete( "search" , "" );
       }).on("autocompleteselect", function(e, ui) {
         update_sources(3, ui.item.value);
