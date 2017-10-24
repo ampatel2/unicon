@@ -1,0 +1,124 @@
+<script>
+
+  function reset() {
+
+    startUnitTags = endUnitTags = <%= raw @units.to_json %>;
+    dimensionTags = <%= raw @dimensions.to_json %>;
+  
+    var previousValue = ""
+  };
+
+
+  function update_sources(source, selected) {
+    
+    $.ajax({
+      url: '/static/get_list',
+      type: 'GET',
+      dataType: 'script',
+      timeout: 1*1000,
+      data: {'source' : source, 
+            'selected' : selected, 
+            'startUnitValue' : $( "#startUnit" ).val(), 
+            'endUnitValue' : $( "#endUnit" ).val(),
+            'dimensionValue' : $( "#dimension" ).val(),
+            'inputValue' : $( "#input_value").val()}
+    });
+  };
+
+
+  $(function() {
+    reset();
+    $("#copy").on("click", function() {
+
+      var x = document.getElementById("end_value");
+      console.log(x.select);
+      document.execCommand("Copy");
+      return false;
+    });
+    $( "#startUnit" )
+      .autocomplete( {
+        source: startUnitTags, 
+        minLength: 0,
+        autoFocus: true,
+        autoSelect: true,
+        change: function (event, ui) {
+          if (!ui.item) {
+            this.value = '';} }
+      }).on("focus", function() {
+        $( "#startUnit" ).autocomplete( "search" , "" );
+      }).on("autocompleteselect", function(e, ui) {
+        update_sources(1, ui.item.value);
+      });
+    
+    $( "#endUnit" )
+      .autocomplete( {
+        source: endUnitTags,
+        minLength: 0,
+        autoFocus: true,
+        autoSelect: true,
+
+        change: function (event, ui) {
+          if (!ui.item) {
+            this.value = '';} }
+      }).on("focus", function() {
+        $( "#endUnit" ).autocomplete( "search" , "" );
+      }).on("autocompleteselect", function(e, ui) {
+        update_sources(2, ui.item.value);
+      });
+
+    $( "#dimension" )
+      .autocomplete( {
+        source: dimensionTags,
+        minLength: 0,
+        autoFocus: true ,
+        autoSelect: true,
+
+        change: function (event, ui) {
+            if (!ui.item) {
+                this.value = '';} }
+        })
+      .on("focus", function() {
+        $( "#dimension" ).autocomplete( "search" , "" );
+      }).on("autocompleteselect", function(e, ui) {
+        update_sources(3, ui.item.value);
+      });
+
+      $(" #input_value").bind('keyup mouseup', function () {
+        update_sources();
+      });
+      });
+</script>
+<div class="container text-center">
+  <div class="text-center"><h1> Universal Converter </h4></div>
+
+  <div class="row">
+      <label class="titler">Convert</label><br/><input class="titler-reset" id="input_value" value="1" placeholder="0">
+  </div>
+  <div class="row">
+      <div class="ui-widget"><input id="startUnit"></div>
+  </div>
+   
+  <div class="row">
+    <label class="titler">based on:</label>
+  </div>
+
+  <div class="row">
+    <div class="ui-widget"><input id="dimension"></div>
+  </div>
+
+  <div class="row">
+      <label class="titler">to</label>
+  </div>
+   
+  <div class="row">
+      <div class="ui-widget"><input id="endUnit"></div>
+  </div>
+  <div class="row">
+    <div class="text-center"><label id="end_value" class="titler-bg">0</label></div>
+  </div>
+  <div class="row">
+    <%= link_to 'Reset', '' %> | 
+    <%= link_to 'Copy to Clipboard', '', id: "copy" %> | 
+    <%= link_to 'Flip Units', '' %>
+  </div>
+</div>

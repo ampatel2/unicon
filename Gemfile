@@ -27,6 +27,7 @@ gem 'haml-rails', '~> 1.0.0'
 gem 'colorize'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
+gem 'bootstrap-combobox', '~> 1.2', '>= 1.2.6'
 
 # gem 'bcrypt', '~> 3.1.7' # Use ActiveModel has_secure_password
 

@@ -1,3 +1,86 @@
-// Place all the styles related to the static controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//colors
+$color_pacific_blue_approx: rgba(0,142,198,1);
+
+//fonts
+$font_0: Lucida Sans Unicode;
+$font_1: Lucida Grande;
+$font_2: sans-serif;
+
+input {
+  //Instead of the line below you could use @include box-sizing($bs)
+  box-sizing: content-box;
+  float: none;
+  z-index: auto;
+  width: auto;
+  height: auto;
+  position: static;
+  text-align: center;
+  margin: 10px;
+  padding: 5px 15px;
+  outline: none;
+  border: 0;
+  border-bottom: 3px solid $color_pacific_blue_approx;
+  background-color: rgb(239,247,255);
+  font: normal 22px/normal $font_0, $font_1, $font_2;
+  text-overflow: clip;
+  height: 40px;
+  font-size: 25px;
+}
+
+.ui-menu .ui-menu-item {
+  height: 40px;
+  font-size: 25px;
+  margin: 10px;
+}
+
+
+.ui-widget input {
+  height: 40px;
+  font-size: 25px;
+  margin: 5px;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active,
+a.ui-button:active,
+.ui-button:active,
+.ui-button.ui-state-active:hover {
+  background-color: $color_pacific_blue_approx;
+  border-width:0px; 
+
+}
+
+.titler {
+
+  font-size: 25px;
+  color: $color_pacific_blue_approx;;
+}
+
+.titler-reset {
+  box-sizing: content-box;
+  float: none;
+  z-index: auto;
+  width: 100px;
+  height: auto;
+  position: static;
+  text-align: center;
+  margin: 0;
+  padding: 5px 15px;
+  outline: none;
+  border: 0;
+  background-color: rgb(255,255,255);
+  text-overflow: clip;
+  height: 40px;
+  font-size: 45px;
+  font-weight: 600;
+  margin: 5px;
+
+}
+
+.titler-bg {
+
+  font-size: 45px;
+  margin: 5px;
+
+}
