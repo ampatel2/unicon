@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'puma', '~> 3.7'
 gem 'devise', '4.3.0'
 gem 'rails_admin', '~> 1.0'
+gem 'figaro'
 
 # Preprocessors / Helpers
 gem 'sass-rails', '~> 5.0'
@@ -44,6 +45,7 @@ group :development do
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
+  gem 'capistrano-figaro-yml'
 end
 
 group :development, :test do
