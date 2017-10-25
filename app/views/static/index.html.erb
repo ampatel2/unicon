@@ -29,12 +29,13 @@
   $(function() {
     reset();
     $("#reset").on("click", function() {
-      $('#input_value').val("1");
+      reset();
       $('#startUnit').val("");
       $('#dimension').val("");
       $('#endUnit').val("");
       $('#end_value').text("0");
-      reset();
+      $('#input_value').val("");
+      $('#input_value').focus();
       return false;
     });
     $("#flip").on("click", function() {
