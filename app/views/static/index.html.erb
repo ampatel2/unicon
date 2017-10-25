@@ -42,8 +42,6 @@
       var temp = $('#startUnit').val();
       $('#startUnit').val($('#endUnit').val());
       $('#endUnit').val(temp);
-      console.log(temp);
-      console.log($('#startUnit').val());
 
       update_sources(1,$('#startUnit').val() );
       return false;
@@ -51,7 +49,7 @@
     $("#copy").on("click", function() {
 
       var x = document.getElementById("end_value");
-      console.log(x.select);
+      
       document.execCommand("Copy");
       return false;
     });
