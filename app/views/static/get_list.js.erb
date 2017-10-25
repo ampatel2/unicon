@@ -1,9 +1,11 @@
-$( "#startUnit" ).val(<%= raw @startUnitValue.inspect %>);
 
-$( "#dimension" ).autocomplete( { source: <%= raw @updated_dimension.to_json %>});
-$( "#dimension" ).val(<%= raw @dimensionValue.inspect %>);
+<% if @source != 0 %>
+  $( "#startUnit" ).val(<%= raw @startUnitValue.inspect %>);
 
-$( "#endUnit" ).autocomplete( { source: <%= raw @updated_unit.to_json %>});
-$( "#endUnit" ).val(<%= raw @endUnitValue.inspect %>);
+  $( "#dimension" ).autocomplete( { source: <%= raw @updated_dimension.to_json %>});
+  $( "#dimension" ).val(<%= raw @dimensionValue.inspect %>);
 
+  $( "#endUnit" ).autocomplete( { source: <%= raw @updated_unit.to_json %>});
+  $( "#endUnit" ).val(<%= raw @endUnitValue.inspect %>);
+<% end %>
 $(" #end_value ").text(<%= @converted %>);

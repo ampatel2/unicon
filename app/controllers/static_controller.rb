@@ -11,14 +11,12 @@ class StaticController < ApplicationController
   def get_list
 
     #get params passed from website via JS AJAX
-    @source = params[:source].to_i || 0
-    @selected = params[:selected] || 0
-    @startUnitValue = params[:startUnitValue]
-    @endUnitValue = params[:endUnitValue]
-    @dimensionValue = params[:dimensionValue]
-    @inputValue = params[:inputValue].to_f
-
-    @prev = @endUnitValue
+    @source = params[:source].to_i || 0         # which UI control called this
+    @selected = params[:selected] || 0          # value of selected UI control
+    @inputValue = params[:inputValue].to_f      # value in Input UI control
+    @startUnitValue = params[:startUnitValue]   # value in Start Unit UI control
+    @endUnitValue = params[:endUnitValue]       # value in End Unit UI control
+    @dimensionValue = params[:dimensionValue]   # value in Dimension UI control
     
     @updated_dimension = Unit.distinct.order(:dimension).where(title: @selected).pluck(:dimension)
     @updated_unit = Unit.distinct.order(:title).where(dimension: @updated_dimension).pluck(:title)
@@ -28,6 +26,7 @@ class StaticController < ApplicationController
 
       @startUnitValue = @selected
       (@dimensionValue = @updated_dimension.first) unless (@updated_dimension.include? (@dimensionValue))
+      @updated_unit = Unit.distinct.order(:title).where(dimension: @dimensionValue).pluck(:title)
       (@endUnitValue = @updated_unit.first) unless (@updated_unit.include? (@endUnitValue))
 
     elsif @source == 2
@@ -41,10 +40,9 @@ class StaticController < ApplicationController
       @dimensionValue = @selected
       @updated_unit = Unit.distinct.order(:title).where(dimension: @dimensionValue).pluck(:title)
       (@startUnitValue = @updated_unit.first) unless (@updated_unit.include? (@startUnitValue))
+      @updated_dimension = Unit.distinct.order(:dimension).where(title: @startUnitValue).pluck(:dimension)
       (@endUnitValue = @updated_unit.first) unless (@updated_unit.include? (@endUnitValue))
-
     end
-
     
       @numerator = Unit.where(title: @startUnitValue, dimension: @dimensionValue).limit(1).pluck(:anchor_value).first.to_f
       @denominator = Unit.where(title: @endUnitValue, dimension: @dimensionValue).limit(1).pluck(:anchor_value).first.to_f
