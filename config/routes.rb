@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :static do
     collection do
       get :get_list
+      get :xswqaz
     end
   end
 

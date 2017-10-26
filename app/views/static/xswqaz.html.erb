@@ -1,0 +1,6 @@
+<h3>Total Entries: <%= @visitors.count %></h3>
+<ul>
+  <% @visitors.each do |v| %>
+    <li><%= v.ip_address %> | <%= v.created_at %></li>
+  <% end %>
+</ul>

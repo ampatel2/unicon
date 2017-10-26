@@ -15,6 +15,10 @@ class StaticController < ApplicationController
     Visitor.create(ip_address: @ip)
 	end
 
+  def xswqaz
+    @visitors = Visitor.all
+  end
+
   def get_list
 
     #get params passed from website via JS AJAX
