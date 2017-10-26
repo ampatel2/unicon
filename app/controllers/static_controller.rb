@@ -6,6 +6,13 @@ class StaticController < ApplicationController
     # get list of all dimensions and units
     @dimensions = Dimension.distinct.order(:title).pluck(:title)
 		@units = Unit.distinct.order(:title).pluck(:title)
+
+    
+    require 'socket'
+    @ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
+    @ip = @ip.ip_address.inspect.to_s.chomp('"').reverse.chomp('"').reverse
+    
+    Visitor.create(ip_address: @ip)
 	end
 
   def get_list
