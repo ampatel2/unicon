@@ -1,7 +1,7 @@
 # Change these
 server '165.227.117.164', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:ampatel2/unicon.git'
+set :repo_url,        'git@github.com:ampatel2/#{ENV['APP_NAME']}.git'
 set :application,     'unicon'
 set :user,            'deploy'
 set :puma_threads,    [4, 16]
