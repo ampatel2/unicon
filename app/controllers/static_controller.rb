@@ -9,14 +9,18 @@ class StaticController < ApplicationController
 
     
     require 'socket'
-    @ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
-    @ip = @ip.ip_address.inspect.to_s.chomp('"').reverse.chomp('"').reverse
+      @ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
+      @ip = @ip.ip_address.inspect.to_s.chomp('"').reverse.chomp('"').reverse if @ip != nil
     
-    Visitor.create(ip_address: @ip)
+      Visitor.create(ip_address: @ip)
 	end
 
   def xswqaz
     @visitors = Visitor.all
+  end
+
+  def donate
+
   end
 
   def get_list

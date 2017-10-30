@@ -12,10 +12,9 @@ development:
 
 test:
   <<: *default
-  database: converter_test
+  database: <%= ENV['DATABASE_NAMES'] %>_test
 
 production:
   <<: *default
-  database: converter_production
+  database: <%= ENV['DATABASE_NAMES'] %>_production
   username: postgres
-  password: <%= ENV['ANKIT_PATEL'] %>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     collection do
       get :get_list
       get :xswqaz
+      get :donate
     end
   end
 
