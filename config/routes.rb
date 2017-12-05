@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get :get_list
       get :xswqaz
       get :donate
+      get :email
     end
   end
 

@@ -1,4 +1,16 @@
 Rails.application.configure do
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :api_key => 'key-d47a7409c29b729b5c1f91884ee10f94',
+    :domain => "www.unitconversion.tech",
+    :user_name => "postmaster@sandboxdc564051095949b28620efbebb898b4b.mailgun.org",
+    :password => "8f4194065d04d26c269226b58cff8a33"
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -27,7 +39,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 

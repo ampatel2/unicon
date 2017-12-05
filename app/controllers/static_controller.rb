@@ -23,6 +23,11 @@ class StaticController < ApplicationController
 
   end
 
+  def email
+    GeneralMailer.feedback_notification().deliver
+  end
+
+
   def get_list
 
     #get params passed from website via JS AJAX
