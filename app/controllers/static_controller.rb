@@ -9,8 +9,8 @@ class StaticController < ApplicationController
 
     
     require 'socket'
-      @ip=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
-      @ip = @ip.ip_address.inspect.to_s.chomp('"').reverse.chomp('"').reverse if @ip != nil
+      @ip=request.remote_ip
+      @ip = @ip.chomp('"').reverse.chomp('"').reverse if @ip != nil
     
       Visitor.create(ip_address: @ip)
 	end
