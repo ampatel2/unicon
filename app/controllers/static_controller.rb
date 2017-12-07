@@ -16,7 +16,7 @@ class StaticController < ApplicationController
 	end
 
   def xswqaz
-    @visitors = Visitor.all
+    @visitors = Visitor.last(5)
   end
 
   def donate
